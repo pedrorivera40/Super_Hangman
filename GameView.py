@@ -6,7 +6,7 @@ BACKGROUND_COLOR = (255, 255, 255) # WHITE
 FONT_COLOR = (0, 0, 0)
 BUTTON_PRESSED = (220, 220, 220)
 BUTTON_ACTIVE = (240, 230, 140)
-IMAGES_COUNT = 11
+IMAGES_COUNT = 9
 IMAGES_FORMAT = ".png"
 KEYS = 26
 PADDING = 5
@@ -39,7 +39,7 @@ class HangmanView:
 
     # def reset_display(self):
 
-    # Loads the 11 images for the Hangman.
+    # Loads the images for the Hangman.
     def load_images(self):
         cdir = os.path.dirname(os.path.realpath(__file__))
         cdir = os.path.join(cdir, "images")
@@ -130,6 +130,6 @@ if __name__ == "__main__":
     my_hangman_view = HangmanView(1000, 600)
     my_hangman_view.load_images()
     my_hangman_view.init_buttons()
-    my_hangman_view.update_image(11)
+    my_hangman_view.update_image(9)
     while 1:
         my_hangman_view.button_pressed_scanner()

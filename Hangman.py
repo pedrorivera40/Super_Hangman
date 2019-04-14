@@ -1,5 +1,5 @@
 
-LIVES = 11
+LIVES = 9
 
 '''
     Hangman model class defines the game behavior.
