@@ -15,10 +15,16 @@ if __name__ == "__main__":
 
     # Game loop...
     while True:
-        # Initialize Hangman Model with word (new) & alphabet.
-        word = word_generator.get_random_word()
-        word = word.upper()
-        hangman = Hangman(word, alphabet)
+        # Initialize Hangman Model with word (new) & alphabet. Must validate all characters are within alphabet.
+        while True:
+            try:
+                word = word_generator.get_random_word()
+                word = word.upper()
+                hangman = Hangman(word, alphabet)
+                break
+            except:
+                print(word + " is not valid.")
+
         game_view.update_image(0)
 
         # Draw buttons to their initial state.
@@ -31,15 +37,17 @@ if __name__ == "__main__":
                 game_view.draw_character(i, ' ')
             else:
                 game_view.draw_character(i, '_')
+
+        # While on current game.
         while not hangman.has_won() and not hangman.has_lost():
             player_input = game_view.button_pressed_scanner()
-            if player_input == None:
+            if player_input == None: # Nothing happened.
                 continue
             elif player_input == -1: # Reload Button Pressed.
                 game_view.draw_feedback("Let's start from scratch.")
                 sleep(2)
                 break
-            else: # A character was pressed.
+            else: # A character button was pressed.
                 letter = alphabet[player_input]
                 response = hangman.play(letter)
                 game_view.draw_button(player_input, gv.BUTTON_PRESSED, letter)

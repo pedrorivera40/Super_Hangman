@@ -18,7 +18,6 @@ class OxfordRequest:
         self.dictionary = requests.get(URL, headers = {'app_id': API_ID, 'app_key': API_KEY})
         self.dictionary =self.dictionary.json()
         self.total_words = len(self.dictionary["results"])
-        print(self.total_words)
 
     def get_random_word(self):
         random = r(0, self.total_words - 1)
